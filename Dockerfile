@@ -2,6 +2,11 @@ FROM openjdk:8u131-jre
 
 MAINTAINER Richard Knowles "richard@inceptiontraining.co.uk"
 
-ADD /target/fleetman-global-config-0.0.1-SNAPSHOT.jar webapp.jar
+RUN wget -O activemq.tar.gz http://archive.apache.org/dist/activemq/5.14.3/apache-activemq-5.14.3-bin.tar.gz
 
-CMD ["java","-Dspring.profiles.active=docker","-Djava.security.egd=file:/dev/./urandom","-jar","webapp.jar"]
+
+# I think we can use ADD to get this for free?
+RUN tar -xzf activemq.tar.gz
+
+# Entrypoint can't be overridden at container start....
+CMD ["apache-activemq-5.14.3/bin/activemq", "console"]
