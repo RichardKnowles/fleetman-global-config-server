@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  fleetman-global-config-server:
+    image: virtualpairprogrammers/fleetman-global-config-server
+    ports: 
+      - '8888:8888'
+
+  fleetman-queue:
+    image: virtualpairprogrammers/fleetman-queue
+    ports:
+      - '8161:8161'
+
+  fleetman-registry:
+     image: virtualpairprogrammers/fleetman-registry
+     ports:
+       - '8010:8010'
+
+  fleetman-webapp:
+     image: virtualpairprogrammers/fleetman-webapp
+     ports:
+       - '80:8080'
+
+  fleetman-position-simulator:
+    image: virtualpairprogrammers/fleetman-position-simulator
+
+  fleetman-position-tracker:
+    image: virtualpairprogrammers/fleetman-position-tracker
